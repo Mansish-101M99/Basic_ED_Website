@@ -15,5 +15,9 @@
     "url": "https://github.com/Mansish-101M99/Basic_ED_Website/issues"
   },
   "homepage": "https://github.com/Mansish-101M99/Basic_ED_Website#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1"
+  }
 }
