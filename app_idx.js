@@ -50,3 +50,10 @@ app.delete('/api/categories/:id', (req, res) => {
     res.send(categ);
 });
 
+
+app.get('/api/categories/:id', (req, res) => {
+    const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
+    if (!categ) return res.status(404).send('Category with given ID is not found..');
+    res.send(categ);
+});
+
