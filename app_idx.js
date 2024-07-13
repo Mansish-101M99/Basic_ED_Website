@@ -25,8 +25,9 @@ app.get('/api/categories', (req, res) => {
 app.post('/api/categories', (req, res) => {
     const categ = { id: categories.length + 1, name: req.body.name };
     categories.push(categ);
-    res.send(categories);
+    res.send(categ);
 });
+
 
 app.put('/api/categories', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
@@ -35,6 +36,16 @@ app.put('/api/categories', (req, res) => {
     if (error) return res.status(404).send(error.details[0].message);
 
     categ.name = req.body.name;
-    res.send(categories);
+    res.send(categ);
 });
 
+
+app.delete('/api/categories', (req, res) => {
+    const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
+    if (!categ) return res.status(404).send('Category with given ID is not found..');
+
+    const idx = categories.indexOf(categ);
+    categories.splice(idx, 1);
+
+    res.send(categories);
+});
