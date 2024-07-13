@@ -1,0 +1,19 @@
+{
+  "name": "basic_ed_website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mansish-101M99/Basic_ED_Website.git"
+  },
+  "author": "Mansish Mahakul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mansish-101M99/Basic_ED_Website/issues"
+  },
+  "homepage": "https://github.com/Mansish-101M99/Basic_ED_Website#readme",
+  "description": ""
+}
