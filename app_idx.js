@@ -28,3 +28,13 @@ app.post('/api/categories', (req, res) => {
     res.send(categories);
 });
 
+app.put('/api/categories', (req, res) => {
+    const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
+    if (!categ) return res.status(404).send('Category with given ID is not found..');
+
+    if (error) return res.status(404).send(error.details[0].message);
+
+    categ.name = req.body.name;
+    res.send(categories);
+});
+
