@@ -1,5 +1,7 @@
 
+const express = require('express');
 
+const router = express.Router();     // This function will add a route to all the CRUD methods
 
 
 const categories = [
@@ -14,18 +16,18 @@ const categories = [
     { id: 9, name: "Operating System Design" },
 ]
 
-app.get('/api/categories', (req, res) => {
+router.get('/api/categories', (req, res) => {
     res.send(categories);
 });
 
-app.post('/api/categories', (req, res) => {
+router.post('/api/categories', (req, res) => {
     const categ = { id: categories.length + 1, name: req.body.name };
     categories.push(categ);
     res.send(categ);
 });
 
 
-app.put('/api/categories/:id', (req, res) => {
+router.put('/api/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
 
@@ -36,7 +38,7 @@ app.put('/api/categories/:id', (req, res) => {
 });
 
 
-app.delete('/api/categories/:id', (req, res) => {
+router.delete('/api/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
 
@@ -47,7 +49,7 @@ app.delete('/api/categories/:id', (req, res) => {
 });
 
 
-app.get('/api/categories/:id', (req, res) => {
+router.get('/api/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
     res.send(categ);
