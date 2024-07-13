@@ -55,3 +55,5 @@ router.get('/api/categories/:id', (req, res) => {
     res.send(categ);
 });
 
+
+modules.export = router;
