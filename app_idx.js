@@ -57,3 +57,8 @@ app.get('/api/categories/:id', (req, res) => {
     res.send(categ);
 });
 
+
+
+const port = process.env.PORT || 3489;
+app.listen(port, (port) => console.log(`Listening to the port :- ${port}`));
+
