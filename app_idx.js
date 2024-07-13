@@ -47,5 +47,6 @@ app.delete('/api/categories', (req, res) => {
     const idx = categories.indexOf(categ);
     categories.splice(idx, 1);
 
-    res.send(categories);
+    res.send(categ);
 });
+
