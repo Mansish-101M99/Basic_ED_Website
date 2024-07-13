@@ -22,3 +22,9 @@ app.get('/api/categories', (req, res) => {
     res.send(categories);
 });
 
+app.post('/api/categories', (req, res) => {
+    const categ = { id: categories.length + 1, name: req.body.name };
+    categories.push(categ);
+    res.send(categories);
+});
+
