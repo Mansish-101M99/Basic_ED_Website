@@ -1,6 +1,8 @@
 
 const express = require('express');
 
+const Joi = require('joi');
+
 const router = express.Router();     // This function will add a route to all the CRUD methods
 
 
@@ -68,4 +70,4 @@ function validateData(category) {
 }
 
 
-modules.export = router;
+module.exports = router;
