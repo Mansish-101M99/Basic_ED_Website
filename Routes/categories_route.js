@@ -21,6 +21,10 @@ router.get('/api/categories', (req, res) => {
 });
 
 router.post('/api/categories', (req, res) => {
+
+    const {error} = validateData(req.body);
+    if (error) res.status(400).send(error.details[0].message);
+
     const categ = { id: categories.length + 1, name: req.body.name };
     categories.push(categ);
     res.send(categ);
@@ -54,6 +58,14 @@ router.get('/api/categories/:id', (req, res) => {
     if (!categ) return res.status(404).send('Category with given ID is not found..');
     res.send(categ);
 });
+
+
+function validateData(category) {
+    const schema = {
+        name: Joi.string().min(3).required()
+    }
+    return Joi.validate(category, schema);
+}
 
 
 modules.export = router;
