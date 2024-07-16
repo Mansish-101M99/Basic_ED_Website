@@ -18,6 +18,7 @@ const categories = [
     { id: 9, name: "Operating System Design" },
 ]
 
+
 // router.get('/api/categories/:id', (req, res) => {
 router.get('/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
@@ -25,10 +26,14 @@ router.get('/categories/:id', (req, res) => {
     res.send(categ);
 });
 
+
+
 // router.get('/api/categories', (req, res) => {
 router.get('/categories', (req, res) => {
     res.send(categories);
 });
+
+
 
 // router.post('/api/categories', (req, res) => {
 router.post('/categories', (req, res) => {
@@ -42,6 +47,7 @@ router.post('/categories', (req, res) => {
 });
 
 
+
 // router.put('/api/categories/:id', (req, res) => {
 router.put('/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
@@ -52,6 +58,7 @@ router.put('/categories/:id', (req, res) => {
     categ.name = req.body.name;
     res.send(categ);
 });
+
 
 
 // router.delete('/api/categories/:id', (req, res) => {
