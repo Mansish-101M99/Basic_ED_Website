@@ -6,10 +6,13 @@ const mongoose = require('mongoose')
 const app = express()
 
 const categories = require('./Routes/categories_route')
+const students = require('./Routes/students_route')
 
 app.use(express.json())
 
 app.use(categories)
+// app.use('/categories', categories)  // -->> app.use(<default_api_link>, page_route)
+app.use(students)
 
 mongoose.connect('mongodb://127.0.0.1/EduWebsite1DB')
 .then(() => console.log("Connection to the DB is Successful..."))
