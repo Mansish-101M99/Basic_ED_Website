@@ -121,9 +121,9 @@ router.delete('/categories/:id', async (req, res) => {
 
 
 function validateData(category) {
-    const schema = {
+    const schema = Joi.object({
         name: Joi.string().min(3).required()
-    }
+    });
     // return Joi.validate(category, schema);  // Depriciated
     return schema.validate(category);
 }
