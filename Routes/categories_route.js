@@ -71,7 +71,7 @@ router.post('/categories', async (req, res) => {
     const categ = new Category({
         name: req.body.name
     });
-    await Category.save();
+    await categ.save();
     res.send(categ);
 });
 
@@ -124,7 +124,8 @@ function validateData(category) {
     const schema = {
         name: Joi.string().min(3).required()
     }
-    return Joi.validate(category, schema);
+    // return Joi.validate(category, schema);  // Depriciated
+    return schema.validate(category);
 }
 
 
