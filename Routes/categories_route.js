@@ -1,10 +1,18 @@
 
 const express = require('express');
 
+const mongoose = require('mongoose');
+
 const Joi = require('joi');
 
 const router = express.Router();     // This function will add a route to all the CRUD methods
 
+
+const categorySchema = new mongoose.schema({
+    name: {type: String, required: true, minlength: 3, maxlength: 30}
+});
+
+const Category = new mongoose.model('Category', categorySchema);
 
 const categories = [
     { id: 1, name: "Front-End Development" },
@@ -19,7 +27,6 @@ const categories = [
 ]
 
 
-// router.get('/api/categories/:id', (req, res) => {
 router.get('/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
@@ -27,15 +34,12 @@ router.get('/categories/:id', (req, res) => {
 });
 
 
-
-// router.get('/api/categories', (req, res) => {
 router.get('/categories', (req, res) => {
     res.send(categories);
 });
 
 
 
-// router.post('/api/categories', (req, res) => {
 router.post('/categories', (req, res) => {
 
     const {error} = validateData(req.body);
@@ -48,7 +52,6 @@ router.post('/categories', (req, res) => {
 
 
 
-// router.put('/api/categories/:id', (req, res) => {
 router.put('/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
@@ -61,7 +64,6 @@ router.put('/categories/:id', (req, res) => {
 
 
 
-// router.delete('/api/categories/:id', (req, res) => {
 router.delete('/categories/:id', (req, res) => {
     const categ = categories.find( (c) => c.id === parseInt(req.params.id) );
     if (!categ) return res.status(404).send('Category with given ID is not found..');
