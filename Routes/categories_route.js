@@ -36,7 +36,7 @@ router.get('/categories/:id', (req, res) => {
     res.send(categ);
 });
 */
-router.get('/categories/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const categ = await Category.findById(req.params.id);
     if (!categ) return res.status(404).send('Category with given ID is not found..');
     res.send(categ);
@@ -48,7 +48,7 @@ router.get('/categories', (req, res) => {
     res.send(categories);
 });
 */
-router.get('/categories', async (req, res) => {
+router.get('/', async (req, res) => {
     let categories = await Category.find()
     res.send(categories);
 });
@@ -64,7 +64,7 @@ router.post('/categories', (req, res) => {
     res.send(categ);
 });
 */
-router.post('/categories', async (req, res) => {
+router.post('/', async (req, res) => {
     const {error} = validateData(req.body);
     if (error) res.status(400).send(error.details[0].message);
 
@@ -87,7 +87,7 @@ router.put('/categories/:id', (req, res) => {
     res.send(categ);
 });
 */
-router.put('/categories/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
 
     const {error} = validateData(req.body);
     if (error) return res.status(404).send(error.details[0].message);
@@ -111,7 +111,7 @@ router.delete('/categories/:id', (req, res) => {
     res.send(categ);
 });
 */
-router.delete('/categories/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     const categ = await Category.findByIdAndRemove(req.params.id);
     if (!categ) return res.status(404).send('Category with given ID is not found..');
 
