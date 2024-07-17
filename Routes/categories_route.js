@@ -8,7 +8,7 @@ const Joi = require('joi');
 const router = express.Router();     // This function will add a route to all the CRUD methods
 
 
-const categorySchema = new mongoose.schema({
+const categorySchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 3, maxlength: 30}
 });
 
