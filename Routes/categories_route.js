@@ -86,7 +86,6 @@ router.put('/:id', async (req, res) => {
     const categ = await Category.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true });
     if (!categ) return res.status(404).send('Category with given ID is not found..');
 
-    categ.name = req.body.name;
     res.send(categ);
 });
 

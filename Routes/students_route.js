@@ -43,7 +43,6 @@ router.put('/:id', async (req, res) => {
         { new: true });
     if (!stud) return res.status(404).send('Student with given ID was not found..');
 
-    stud.name = req.body.name;
     res.send(stud);
 });
 
