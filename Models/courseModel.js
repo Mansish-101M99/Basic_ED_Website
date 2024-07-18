@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 
 const Joi = require('joi');
 
+const {categorySchema} = require('../Models/categoryModel');
+
 
 const Course = new mongoose.model('Course', new mongoose.Schema({
     title: {type: String, required: true, trim: true, minlength: 5, maxlength: 300},
-    category: {},
+    category: {type: categorySchema, required: true},
     creator: {type: String, required: true},
     rating: {type: Number, required: true}
 }));
