@@ -20,5 +20,6 @@ function validateData(category) {
 }
 
 
-module.Category = Category;
-module.validate = validateData;
+exports.Category = Category;
+exports.categorySchema = categorySchema;
+exports.validate = validateData;

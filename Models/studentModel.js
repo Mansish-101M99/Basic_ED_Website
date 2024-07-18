@@ -21,5 +21,5 @@ function validateData(student) {
 }
 
 
-module.Students = Students;
-module.validate = validateData;
+exports.Students = Students;
+exports.validate = validateData;

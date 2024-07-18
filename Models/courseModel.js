@@ -22,5 +22,5 @@ function validateData(course) {
 }
 
 
-module.Course = Course;
-module.validating = validateData;
+exports.Course = Course;
+exports.validating = validateData;
