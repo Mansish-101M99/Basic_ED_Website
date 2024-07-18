@@ -10,9 +10,10 @@ const students = require('./Routes/students_route')
 
 app.use(express.json())
 
-app.use(categories)
-// app.use('/categories', categories)  // -->> app.use(<default_api_link>, page_route)
-app.use(students)
+// app.use(categories)
+app.use('/categories', categories)  // --->> app.use(<default_api_link>, page_route)
+// app.use(students)
+app.use('/students', students)  
 
 mongoose.connect('mongodb://127.0.0.1/EduWebsite1DB')
 .then(() => console.log("Connection to the DB is Successful..."))
