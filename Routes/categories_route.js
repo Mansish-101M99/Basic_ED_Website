@@ -1,18 +1,9 @@
 
 const express = require('express');
 
-const mongoose = require('mongoose');
-
-const Joi = require('joi');
-
 const router = express.Router();     // This function will add a route to all the CRUD methods
 
-
-const categorySchema = new mongoose.Schema({
-    name: {type: String, required: true, minlength: 3, maxlength: 30}
-});
-
-const Category = new mongoose.model('Category', categorySchema);
+const {Category, validate} = require('../Models/categoryModel');
 
 /*
 const categories = [
@@ -65,7 +56,7 @@ router.post('/categories', (req, res) => {
 });
 */
 router.post('/', async (req, res) => {
-    const {error} = validateData(req.body);
+    const {error} = validate(req.body);
     if (error) res.status(400).send(error.details[0].message);
 
     const categ = new Category({
@@ -89,7 +80,7 @@ router.put('/categories/:id', (req, res) => {
 */
 router.put('/:id', async (req, res) => {
 
-    const {error} = validateData(req.body);
+    const {error} = validate(req.body);
     if (error) return res.status(404).send(error.details[0].message);
 
     const categ = await Category.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true });
@@ -118,15 +109,6 @@ router.delete('/:id', async (req, res) => {
     res.send(categ);
 });
 
-
-
-function validateData(category) {
-    const schema = Joi.object({
-        name: Joi.string().min(3).required()
-    });
-    // return Joi.validate(category, schema);  // Depriciated
-    return schema.validate(category);
-}
 
 
 module.exports = router;
